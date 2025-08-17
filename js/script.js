@@ -29,3 +29,17 @@ document.querySelectorAll('[data-scroll]').forEach(btn => {
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => nav.classList.remove('active'));
 });
+
+// Simple enquiry form handler (no API)
+const form = document.getElementById('enquiryForm');
+const note = document.getElementById('formNote');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
+  // Basic feedback
+  note.textContent = `Thanks, ${data.name || 'traveler'}! We'll email you at ${data.email} shortly.`;
+  form.reset();
+});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
